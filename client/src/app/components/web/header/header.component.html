@@ -33,7 +33,7 @@
           <a class="nav-link" (click)="collapseNav();" [routerLink]="['/']">inicio <span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" (click)="collapseNav();" [routerLink]="['/productos']">productos</a>
+          <a class="nav-link" (click)="collapseNav();" [routerLink]="['/productos']">Productos</a>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link " (click)="collapseNav();" [routerLink]="['/productos']">
@@ -44,8 +44,13 @@
           <a class="nav-link" (click)="collapseNav();" [routerLink]="['/contacto']">Contacto</a>
         </li>
         <li class="nav-item">
+            <a class="nav-link" (click)="collapseNav();" [routerLink]="['/presupuesto']">
+              Login
+            </a>
+          </li>
+        <li class="nav-item">
           <a class="nav-link" (click)="collapseNav();" [routerLink]="['/presupuesto']">
-            Presupuesto
+            <i class="far fa-user-circle" id="user" ></i>
           </a>
         </li>
       </ul>
