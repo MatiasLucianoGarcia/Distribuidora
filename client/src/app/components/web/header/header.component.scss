@@ -1,0 +1,46 @@
+$colorBlueLight: #f1f362;
+
+header{
+    background-color: $colorBlueLight;
+    color: #242020;
+    padding: 5px 0;
+    font-size: 1rem;
+}
+
+i {
+    font-size: 1.2rem;
+    margin: 5px;
+}
+
+nav {
+    background: rgb(6,126,191);
+    background: linear-gradient(90deg, rgba(6,126,191,1) 28%, rgba(0,157,200,1) 72%, rgba(119,207,231,1) 100%);
+}
+
+
+@media only screen and (max-width: 991px) {	
+    
+    .navbar .navbar-brand{
+        width: 200px;
+        margin: 10px 0;
+    }
+    .navbar .navbar-brand img{
+        width: 100%;
+    }
+    .nav-item{
+        text-align: left !important;
+    } 
+    .nav-link{
+        text-align: left;
+        padding: 8px !important;
+        font-size: 17px !important;
+    }
+}
+
+
+
+@media only screen and (max-width: 350px) {	
+    .ocultar{
+        display: none;
+    }
+}

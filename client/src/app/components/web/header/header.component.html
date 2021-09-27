@@ -1,0 +1,52 @@
+<header class="clearfix">
+    <div class="float-left">
+        <p class="m-2">Lorem ipsum dolor sit amet.</p>
+    </div> 
+
+    <div class="float-right">
+        <div class="m-2 ">
+            <div class="contacto float-left d-md-inline-block">
+                <i class="fas fa-map-marker-alt"></i>
+                <span class="d-none d-md-inline-block mr-3">
+                    Bahía Blanca, Buenos Aires
+                </span>
+                <i class="fas fa-phone"></i>
+                <span class="d-none d-md-inline-block mr-3">
+                    +54 291 44335578
+                </span>
+            </div>
+            <div class="social float-right">
+                <i class="fab fa-facebook-square"></i>
+                <i class="fab fa-instagram"></i>
+                <i class="fab fa-whatsapp"></i>
+            </div>
+        </div>
+    </div>
+</header>
+
+<nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
+    <div class="sdhjjf">
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos, nihil?</p>
+    </div>
+    <ul class="navbar-nav navbar-right ml-auto">
+        <li class="nav-item active ">
+          <a class="nav-link" (click)="collapseNav();" [routerLink]="['/']">inicio <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" (click)="collapseNav();" [routerLink]="['/productos']">productos</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link " (click)="collapseNav();" [routerLink]="['/productos']">
+            categorías
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" (click)="collapseNav();" [routerLink]="['/contacto']">Contacto</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" (click)="collapseNav();" [routerLink]="['/presupuesto']">
+            Presupuesto
+          </a>
+        </li>
+      </ul>
+</nav>
