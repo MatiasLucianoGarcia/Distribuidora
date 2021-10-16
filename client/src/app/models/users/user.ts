@@ -1,3 +1,5 @@
+import { Lista } from "../listas/lista";
+
 export class User {
   constructor(
     public id: number,
@@ -6,6 +8,7 @@ export class User {
     public password: string,
     public role: string,
     public remember_token: string,
+    public lista: Lista | undefined,
     public created_at: string,
     public updated_at: string
   ) { }

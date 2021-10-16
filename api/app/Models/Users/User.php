@@ -2,6 +2,7 @@
 
 namespace App\Models\Users;
 
+use App\Models\Listas\Lista;
 use Laravel\Passport\HasApiTokens;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -17,7 +18,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'nombre', 'email', 'password', 'tipo', 'role'
+        'nombre', 'email', 'password', 'tipo', 'role', 'lista_id'
     ];
 
     /**
@@ -37,4 +38,9 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function lista(){
+        return $this->HasOne(Lista::class,'id','lista_id');
+    }
+
 }

@@ -1,0 +1,35 @@
+<div class="row">
+    <div class="form-group col-12 mb-0">
+        <label for="nombre">
+            {{name}} {{ required ? '*' : ''}}
+        </label>
+        <select class="form-control" [(ngModel)]="select"> >
+            <option *ngIf="!select" [ngValue]="null" disabled selected>
+                {{ 'Seleccionar '+name }}
+            </option>
+            <option *ngIf="select" [ngValue]="select" disabled selected>
+                {{ 
+                    (key) 
+                        ? select[key] 
+                        : select 
+                }}
+            </option>
+            <option 
+                *ngFor="let option of options" 
+                [ngValue]="option"
+            >
+                {{
+                    key 
+                    ? option[key]
+                    : option
+                }}
+            </option>
+            <option 
+                *ngIf="!required" 
+                [ngValue]="null"
+            >
+                Sin {{name}}
+            </option>
+        </select>
+    </div>
+</div>

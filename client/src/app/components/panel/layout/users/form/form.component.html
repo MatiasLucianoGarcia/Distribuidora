@@ -21,57 +21,41 @@
         <div class="modal-body text-left">
           <div class="form-row">
 
-
             <div class="form-group col-12 order-first order-md-2">
-              <label for="nombre">Nombre *</label>
-              <input class="form-control" name="nombre" type="text" #nombre="ngModel" [(ngModel)]="myUser.nombre" required
-                placeholder="Nombre del usuario">
-              <div *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)" class="alerta">
-                <div *ngIf="nombre.errors.required">
-                  Debe ingresar un nombre para el usuario
-                </div>
-              </div>
+              <xeron-input-form [name]='"Nombre"' [placeholder]="'Nombre del usuario'" [required]='true'
+                [value]="myUser.nombre" (onChange)="myUser.nombre = $event"></xeron-input-form>
             </div>
 
             <div class="form-group col-12 order-first order-md-2">
-              <label for="nombre">E-mail *</label>
-              <input class="form-control" name="email" type="text" #email="ngModel" [(ngModel)]="myUser.email" required
-                placeholder="E-mail del usuario">
-              <div *ngIf="email.invalid && (email.dirty || email.touched)" class="alerta">
-                <div *ngIf="email.errors.required">
-                  Debe ingresar un email para el usuario
-                </div>
-              </div>
+              <xeron-input-form [name]='"E-mail"' [placeholder]="'E-mail del usuario'" [required]='true'
+                [value]="myUser.email" (onChange)="myUser.email = $event"></xeron-input-form>
             </div>
 
             <div class="form-group col-12 order-first order-md-2">
-              <label for="nombre">Rol *</label>
-              <select class="form-control" name="role" type="text" #role="ngModel"
-                [(ngModel)]="myUser.role">
-                <option [value]="0" selected>Seleccionar rol</option>
-                <option *ngFor="let role of ['admin','minorista','mayorista']" [attr.value]="role" [selected]="myUser.role==role">{{role}}</option>
-              </select>
+              <xeron-select-form [name]='"Rol"' [options]="['admin','minorista','mayorista']" [select]="myUser.role"
+                [required]='true' (onSelect)="myUser.role = $event"></xeron-select-form>
             </div>
 
             <div class="form-group col-12 order-first order-md-2">
-              <label for="nombre">Password *</label>
-              <input class="form-control" name="password" type="password" #password="ngModel" [(ngModel)]="myUser.password" required autocomplete="nope"
-                placeholder="Contraseña del usuario">
-                <small *ngIf="myUser.id!==0" class="text-secondary pl-1">Solo si desea cambiar la constraseña</small>
+              <xeron-select-form [name]='"Lista"' [key]='"nombre"' [options]='listas' [select]="myUser.lista"
+                [required]='true' (onSelect)="myUser.lista = $event"></xeron-select-form>
             </div>
 
-            <div *ngIf="status.errores" class="errores col-12">
-              <div class="alert alert-danger" *ngFor="let error of status.errores">{{error}}</div>
+            <div class="form-group col-12 order-first order-md-2">
+              <xeron-input-form [name]='"Password"' [placeholder]="'Contraseña del usuario'" [required]='false'
+                [value]="myUser.password" (onChange)="myUser.password = $event"></xeron-input-form>
+              <small *ngIf="myUser.id!==0" class="text-secondary pl-1">Solo si desea cambiar la constraseña</small>
+            </div>
+
+            <div class="form-group col-12 order-first order-md-2">
+              <xeron-errors-form [show]="status.errores" [errors]="status.errores"></xeron-errors-form>
             </div>
 
           </div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-          <button type="button" class="btn btn-primary" (click)="confirmar()">
-            <span *ngIf="status.loading" class="mr-2"><i class="fad fa-spinner-third fa-spin"></i></span>
-            <span>Confirmar</span>
-          </button>
+          <xeron-button-close-form></xeron-button-close-form>
+          <xeron-button-confirm-form [loading]="status.loading" (onConfirm)="confirmar()"></xeron-button-confirm-form>
         </div>
       </form>
     </div>

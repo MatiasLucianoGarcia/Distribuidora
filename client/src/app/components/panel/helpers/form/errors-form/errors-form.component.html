@@ -1,0 +1,7 @@
+<div class="row">
+    <div *ngIf="show" class="errores col-12">
+        <div class="alert alert-danger" *ngFor="let error of errors">
+            {{error}}
+        </div>
+    </div>
+</div>

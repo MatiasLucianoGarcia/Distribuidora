@@ -2,6 +2,7 @@ import { UserService } from './../../../../../services/users/user.service';
 import { User } from './../../../../../models/users/user';
 import { Component, OnInit, Input, Output, EventEmitter, ViewChild, ElementRef } from '@angular/core';
 import Status from './../../../../../helpers/status';
+import { Lista } from './../../../../../models/listas/lista';
 
 @Component({
   selector: 'xeron-form-user',
@@ -11,6 +12,7 @@ import Status from './../../../../../helpers/status';
 export class FormComponent implements OnInit {
   @Input() user: User;
   @Input() title: string;
+  @Input() listas: Array<Lista>;
   @Output() updateTable: EventEmitter<User> = new EventEmitter();
   @ViewChild('closebutton', { static: false }) closebutton: ElementRef;
   public myUser: User;
@@ -46,6 +48,7 @@ export class FormComponent implements OnInit {
   }
 
   private update(): void  {
+    console.log(this.myUser);
     this.status.setLoading();
     const token = this._user.getToken();
     this._user.update(this.myUser, token).subscribe({

@@ -25,9 +25,10 @@ class UserData
         Validator::validator(
             $request->all(),
             array(
-                'nombre'       => 'required|string|max:64',
-                'email'       => 'required|string|email',
-                'role'       => 'required|in:admin,minorista,mayorista',
+                'nombre' => 'required|string|max:64',
+                'email' => 'required|string|email',
+                'role' => 'required|in:admin,minorista,mayorista',
+                'lista.id' => 'nullable|min:0'
             ),
             $messages
         );

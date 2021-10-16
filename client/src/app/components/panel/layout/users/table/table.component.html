@@ -7,13 +7,14 @@
     >
     </xeron-filter>
 
-    <xeron-form-user [title]="'Crear usuario'" (updateTable)="table.insertElement($event)"></xeron-form-user>
+    <xeron-form-user [title]="'Crear usuario'" [listas]="listas" (updateTable)="table.insertElement($event)"></xeron-form-user>
 
     <table class="table table-hover fixed">
       <thead>
         <tr>
           <th scope="col">Nombre</th>
           <th scope="col">E-mail</th>
+          <th scope="col">Lista</th>
           <th scope="col">Tipo</th>
           <th scope="col">Acciones</th>
         </tr>
@@ -25,9 +26,10 @@
           <tr *ngFor=" let user of table.elements_filter  | paginate: { itemsPerPage: table.itemsPerPage, currentPage: table.currentPage }">
             <td>{{ user.nombre }}</td>
             <td>{{ user.email }}</td>
+            <td>{{ (user.lista) ? user.lista.nombre : 'Sin lista' }}</td>
             <td>{{ user.role }}</td>
             <td>
-              <xeron-form-user [title]="'Editar usuario'" [user]="user" (updateTable)="table.updateElement($event)"></xeron-form-user>
+              <xeron-form-user [title]="'Editar usuario'" [user]="user"  [listas]="listas" (updateTable)="table.updateElement($event)"></xeron-form-user>
               <xeron-delete-user [user]="user" (updateTable)="table.deleteElement($event)"></xeron-delete-user>
             </td>
           </tr>

@@ -1,6 +1,6 @@
 <xeron-title [title]="'Usuarios'"></xeron-title>
 
-<div *ngIf="status.loading" class="spinner-border text-danger" role="status">
+<div *ngIf="status.loading || statusLista.loading" class="spinner-border text-danger" role="status">
   <span class="sr-only">Loading...</span>
 </div>
 
@@ -8,4 +8,4 @@
   <div class="alert alert-danger" *ngFor="let error of status.errores">{{error}}</div>
 </div>
 
-<xeron-table *ngIf="status.success" [users]="users"></xeron-table>
+<xeron-table *ngIf="status.success && statusLista.success" [users]="users" [listas]="listas"></xeron-table>

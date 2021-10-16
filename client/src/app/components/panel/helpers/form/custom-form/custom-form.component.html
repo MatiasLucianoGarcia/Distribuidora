@@ -1,0 +1,68 @@
+<a *ngIf="object && object[primayKey]!==0" type="button" title="Editar" class="text-info ml-2" data-toggle="modal"
+    [attr.data-target]="'#modal'+key+'-'+object[primayKey]">
+    <i class="far fa-edit"></i>
+</a>
+
+<div *ngIf="object && object[primayKey]!==0" class="btn btn-danger btn-sm float-left float-md-right mb-2 mb-md-0"
+    data-toggle="modal" [attr.data-target]="'#modal'+key+'-'+object[primayKey]">{{title}}</div>
+
+<!-- Modal -->
+<div *ngIf="object" class="modal fade" [attr.id]="'modal'+key+'-'+object[primayKey]" tabindex="-1" role="dialog"
+    aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">{{title}}</h5>
+                <button #closebutton type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form #productForm="ngForm">
+                <div class="modal-body text-left">
+                    <div class="form-row">
+
+                        <div class="form-group col-12 order-first order-md-2">
+                            <xeron-input-form [name]='"Nombre"' [placeholder]="'Nombre del usuario'" [required]='true'
+                                [value]="myUser.nombre" (onChange)="myUser.nombre = $event"></xeron-input-form>
+                        </div>
+
+                        <div class="form-group col-12 order-first order-md-2">
+                            <xeron-input-form [name]='"E-mail"' [placeholder]="'E-mail del usuario'" [required]='true'
+                                [value]="myUser.email" (onChange)="myUser.email = $event"></xeron-input-form>
+                        </div>
+
+                        <div class="form-group col-12 order-first order-md-2">
+                            <xeron-select-form [name]='"Rol"' [options]="['admin','minorista','mayorista']"
+                                [select]="myUser.role" [required]='true' (onSelect)="myUser.role = $event">
+                            </xeron-select-form>
+                        </div>
+
+                        <div class="form-group col-12 order-first order-md-2">
+                            <xeron-select-form [name]='"Lista"' [key]='"nombre"' [options]='listas'
+                                [select]="myUser.lista" [required]='true' (onSelect)="myUser.lista = $event">
+                            </xeron-select-form>
+                        </div>
+
+                        <div class="form-group col-12 order-first order-md-2">
+                            <xeron-input-form [name]='"Password"' [placeholder]="'Contraseña del usuario'"
+                                [required]='false' [value]="myUser.password" (onChange)="myUser.password = $event">
+                            </xeron-input-form>
+                            <small *ngIf="myUser.id!==0" class="text-secondary pl-1">Solo si desea cambiar la
+                                constraseña</small>
+                        </div>
+
+                        <div class="form-group col-12 order-first order-md-2">
+                            <xeron-errors-form [show]="status.errores" [errors]="status.errores"></xeron-errors-form>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <xeron-button-close-form></xeron-button-close-form>
+                    <xeron-button-confirm-form [loading]="status.loading" (onConfirm)="confirmar()">
+                    </xeron-button-confirm-form>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

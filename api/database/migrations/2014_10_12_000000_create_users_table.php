@@ -15,14 +15,25 @@ class CreateUsersTable extends Migration
     public function up()
     {
         Schema::create('users', function (Blueprint $table) {
-            $table->id();
+			$table->engine = 'InnoDB';	
+			$table->charset = 'utf8';
+			$table->collation = 'utf8_general_ci';
+            
+            $table->increments('id');
             $table->string('nombre');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->enum('role',['admin','minorista','mayorista']);
+            $table->integer('lista_id')->unsigned()->nullable();
             $table->rememberToken();
             $table->timestamps();
+
+            
+            $table->foreign('lista_id')
+                ->references('id')->on('listas')
+                ->onDelete('restrict')
+                ->onUpdate('restrict');
         });
 
         $this->agregar('User 1', 'germang08@hotmail.com', '$2y$10$mSy4qpcpW/nGCXiYi8ZBFOv9y1AVUUFOEyZcvxD86CeH.rVEaFV0a', 'admin');

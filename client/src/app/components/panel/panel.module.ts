@@ -15,6 +15,12 @@ import { FilterComponent } from './helpers/filter/filter.component';
 import { FormComponent as UserFormComponent } from './layout/users/form/form.component';
 import { TableComponent as UsersTableComponent } from './layout/users/table/table.component';
 import { DeleteComponent as UserDeleteComponent } from './layout/users/delete/delete.component';
+import { SelectFormComponent } from './helpers/form/select-form/select-form.component';
+import { InputFormComponent } from './helpers/form/input-form/input-form.component';
+import { ErrorsFormComponent } from './helpers/form/errors-form/errors-form.component';
+import { ButtonConfirmFormComponent } from './helpers/form/button-confirm-form/button-confirm-form.component';
+import { ButtonCloseFormComponent } from './helpers/form/button-close-form/button-close-form.component';
+import { CustomFormComponent } from './helpers/form/custom-form/custom-form.component';
 
 
 @NgModule({
@@ -29,7 +35,13 @@ import { DeleteComponent as UserDeleteComponent } from './layout/users/delete/de
     UsersComponent,
     UsersTableComponent,
     UserFormComponent,
-    UserDeleteComponent
+    UserDeleteComponent,
+    SelectFormComponent,
+    InputFormComponent,
+    ErrorsFormComponent,
+    ButtonConfirmFormComponent,
+    ButtonCloseFormComponent,
+    CustomFormComponent
 
   ],
   imports: [

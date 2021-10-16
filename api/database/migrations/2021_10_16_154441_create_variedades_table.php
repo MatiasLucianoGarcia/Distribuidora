@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePasswordResetsTable extends Migration
+class CreateVariedadesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,22 @@ class CreatePasswordResetsTable extends Migration
      */
     public function up()
     {
-        Schema::create('password_resets', function (Blueprint $table) {
+        Schema::create('variedades', function (Blueprint $table) {
 			$table->engine = 'InnoDB';	
 			$table->charset = 'utf8';
 			$table->collation = 'utf8_general_ci';
-            
+
             $table->increments('id');
-            $table->string('email')->index();
-            $table->string('token');
+            $table->string('nombre');
+            $table->integer('producto_id')->unsigned();
+            $table->string('codigo')->unique();
+            $table->string('stock')->default(0);
             $table->timestamps();
+
+            $table->foreign('producto_id')
+                ->references('id')->on('productos')
+                ->onDelete('restrict')
+                ->onUpdate('cascade');
         });
     }
 
@@ -32,6 +39,6 @@ class CreatePasswordResetsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('password_resets');
+        Schema::dropIfExists('variedades');
     }
 }

@@ -14,7 +14,11 @@ class CreateMailNotifications extends Migration
     public function up()
     {
         Schema::create('mail_notifications', function (Blueprint $table) {
-            $table->id();
+			$table->engine = 'InnoDB';	
+			$table->charset = 'utf8';
+			$table->collation = 'utf8_general_ci';
+            
+            $table->increments('id');
             $table->string('from');
             $table->string('to');
             $table->string('subject');

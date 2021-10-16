@@ -2,6 +2,8 @@ import { UserService } from './../../../../services/users/user.service';
 import Status from './../../../../helpers/status';
 import { User } from './../../../../models/users/user';
 import { Component, OnInit } from '@angular/core';
+import { ListaService } from './../../../../services/listas/lista.service';
+import { Lista } from './../../../../models/listas/lista';
 
 @Component({
   selector: 'xeron-users',
@@ -10,16 +12,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UsersComponent implements OnInit {
   public users: Array<User>;
+  public listas: Array<Lista>;
   public status: Status;
+  public statusLista: Status;
 
 
   constructor(
-    protected _user: UserService
+    protected _user: UserService,
+    protected _lista: ListaService
   ) { }
 
   ngOnInit(): void {
     this.status = new Status();
+    this.statusLista = new Status();
     this.getUsers();
+    this.getListas();
   }
 
   getUsers(): void {
@@ -29,6 +36,16 @@ export class UsersComponent implements OnInit {
       next: users => this.users = users,
       complete: () => this.status.setSuccess(),
       error: error => this.status.processError(error)
+    });
+  } 
+  
+  getListas(): void {
+    this.statusLista.setLoading();
+
+    this._lista.all().subscribe({
+      next: listas => this.listas = listas,
+      complete: () => this.statusLista.setSuccess(),
+      error: error => this.statusLista.processError(error)
     });
   }
 

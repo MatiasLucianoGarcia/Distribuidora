@@ -26,9 +26,8 @@ class UserController extends Controller
     public function update(Request $request)
     {
         $data =  $request->all();
-        if (isset($data['password'])) {
-            $data['password'] = bcrypt($data['password']);
-        }
+        if (isset($data['password'])) { $data['password'] = bcrypt($data['password']); }
+        $data['lista_id'] = (isset($data['lista'])) ? $request['lista']['id'] : null;
         return Response::success(UserRepo::update($data['id'], $data));
     }
 
@@ -36,6 +35,7 @@ class UserController extends Controller
     {
         $data =  $request->all();
         $data['password'] = bcrypt($data['password']);
+        $data['lista_id'] = (isset($data['lista'])) ? $request['lista']['id'] : null;
         return Response::success(UserRepo::insert($data));
     }
 

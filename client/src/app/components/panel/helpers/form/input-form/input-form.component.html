@@ -1,0 +1,6 @@
+<div class="row">
+    <div class="form-group col-12 mb-0">
+        <label [for]="'name'">{{name}} {{ required ? '*' : ''}}</label>
+        <input class="form-control" [name]="'name'" [type]='type' [(ngModel)]="value" required [placeholder]="placeholder">
+    </div>
+</div>

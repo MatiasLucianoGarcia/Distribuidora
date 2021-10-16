@@ -4,6 +4,7 @@ import { User } from '../../models/users/user';
 import { ApiService } from '../config/api.service';
 import { Observable } from 'rxjs';
 import { formatDate } from '@angular/common';
+import { ListaService } from '../listas/lista.service';
 
 @Injectable({
   providedIn: 'root'
@@ -15,6 +16,7 @@ export class UserService {
 
   constructor(
     private _api: ApiService,
+    private _lista: ListaService,
     private _localStorage: LocalService
   ) { }
 
@@ -94,7 +96,7 @@ export class UserService {
   }
 
   dummy(): User {
-    return new User(0, '', '', '', '', '', '', '');
+    return new User(0, '', '', '', '', '', this._lista.dummy(), '', '');
   }
 
   all(token: string): Observable<any> {
@@ -105,12 +107,11 @@ export class UserService {
     return this._api.post('user/', user, token);
   }
 
-  update({ id, nombre, email, password, role }: User, token: string): Observable<any> {
-    const data = { id, nombre, email, role };
-    if (password && password.length > 0) {
-      data[password = 'password'] = password;
+  update(user: User, token: string): Observable<any> {
+    if (!user.password || user.password.length == 0) {
+      user['password'] = undefined;
     }
-    return this._api.put('user/', data, token);
+    return this._api.put('user/', user, token);
   }
 
   delete(email: string, token: string): Observable<any> {
