@@ -1,4 +1,32 @@
 import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
+import Status from './../../../../../helpers/status';
+
+export interface Data {
+  key: string,
+  input?: any; //InputForm;
+  select?: any; //selectForm;
+}
+
+interface InputType {
+  required: boolean;
+  name: string;
+}
+
+class InputForm implements InputType {
+  required: boolean;
+  name: string;
+  placeholder: string;
+  value: any;
+  type?: string = 'text';
+}
+
+class selectForm implements  InputType {
+  required: boolean;
+  name: string;
+  key?: string;
+  options: Array<any>
+  select: any
+}
 
 @Component({
   selector: 'xeron-custom-form',
@@ -7,36 +35,22 @@ import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild }
 })
 export class CustomFormComponent<T> implements OnInit {
   @Input() object: T;
-  @Input() primayKey: string;
-  @Input() key: string;
-  @Input() inputs: Data<T>[] = [];
+  @Input() primaryKey: string;
+  @Input() inputs: Data[] = [];
   @Input() title: string;
-  @Output() updateTable: EventEmitter<T> = new EventEmitter();
+  @Input() status: Status;
+  @Output() onConfirm: EventEmitter<void> = new EventEmitter();
   @ViewChild('closebutton', { static: false }) closebutton: ElementRef;
 
   constructor() { }
 
   ngOnInit(): void {
+    console.log(this.inputs[0].input.value)
+  }  
+
+  confirmar() {
+    this.onConfirm.emit();
   }
-
+  
 }
 
-interface Data<T> {
-  key: string,
-  input: InputForm<T> | InputForm<T>;
-}
-
-interface InputType<T> {
-  required: boolean;
-  name: string;
-}
-
-interface InputForm<T> extends InputType<T> {
-  placeholder: string;
-  value: T
-}
-
-interface InputForm<T> extends InputType<T> {
-  options: Array<T>
-  select: T
-}

@@ -21,6 +21,8 @@ import { ErrorsFormComponent } from './helpers/form/errors-form/errors-form.comp
 import { ButtonConfirmFormComponent } from './helpers/form/button-confirm-form/button-confirm-form.component';
 import { ButtonCloseFormComponent } from './helpers/form/button-close-form/button-close-form.component';
 import { CustomFormComponent } from './helpers/form/custom-form/custom-form.component';
+import { ButtonEditComponent } from './helpers/form/button-edit/button-edit.component';
+import { ButtonCreateComponent } from './helpers/form/button-create/button-create.component';
 
 
 @NgModule({
@@ -41,7 +43,9 @@ import { CustomFormComponent } from './helpers/form/custom-form/custom-form.comp
     ErrorsFormComponent,
     ButtonConfirmFormComponent,
     ButtonCloseFormComponent,
-    CustomFormComponent
+    CustomFormComponent,
+    ButtonEditComponent,
+    ButtonCreateComponent
 
   ],
   imports: [

@@ -9,7 +9,7 @@ export class InputFormComponent<T> implements DoCheck {
   @Input() name: string;
   @Input() placeholder: string = '';
   @Input() required: boolean = false;
-  @Input() value: T | null = null;
+  @Input() value: T;
   @Input() type: string = 'text';
   @Output() onChange: EventEmitter<T | null> = new EventEmitter();
 

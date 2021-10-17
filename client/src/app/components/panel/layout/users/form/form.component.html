@@ -1,13 +1,9 @@
-<a *ngIf="myUser && myUser.id!==0" type="button" title="Editar" class="text-info ml-2" data-toggle="modal"
-  [attr.data-target]="'#modalEditUser-'+myUser.id">
-  <i class="far fa-edit"></i>
-</a>
+<xeron-button-edit *ngIf="myUser && myUser.id!==0" [key]="modalKey"></xeron-button-edit>
 
-<div *ngIf="myUser && myUser.id===0" class="btn btn-danger btn-sm float-left float-md-right mb-2 mb-md-0"
-  data-toggle="modal" [attr.data-target]="'#modalEditUser-'+myUser.id">{{title}}</div>
+<xeron-button-create *ngIf="myUser && myUser.id===0" [key]="modalKey" [title]='title'></xeron-button-create>
 
 <!-- Modal -->
-<div *ngIf="myUser" class="modal fade" [attr.id]="'modalEditUser-'+myUser.id" tabindex="-1" role="dialog"
+<div *ngIf="myUser" class="modal fade" [attr.id]="modalKey" tabindex="-1" role="dialog"
   aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
@@ -21,7 +17,7 @@
         <div class="modal-body text-left">
           <div class="form-row">
 
-            <div class="form-group col-12 order-first order-md-2">
+           <!--  <div class="form-group col-12 order-first order-md-2">
               <xeron-input-form [name]='"Nombre"' [placeholder]="'Nombre del usuario'" [required]='true'
                 [value]="myUser.nombre" (onChange)="myUser.nombre = $event"></xeron-input-form>
             </div>
@@ -45,7 +41,25 @@
               <xeron-input-form [name]='"Password"' [placeholder]="'Contraseña del usuario'" [required]='false'
                 [value]="myUser.password" (onChange)="myUser.password = $event"></xeron-input-form>
               <small *ngIf="myUser.id!==0" class="text-secondary pl-1">Solo si desea cambiar la constraseña</small>
-            </div>
+            </div> -->
+
+            
+            <ng-container *ngFor="let data of inputs">
+              <div class="form-group col-12 order-first order-md-2">
+                  <ng-container *ngIf="data.input">
+                      <xeron-input-form [name]='data.input.name' [type]='data.input.type'
+                          [placeholder]="data.input.placeholder" [required]='data.input.required'
+                          [value]='data.input.value' (onChange)="myUser[data.key] = $event">
+                      </xeron-input-form>
+                  </ng-container>
+                  <ng-container *ngIf="data.select">
+                      <xeron-select-form [name]='data.select.name' [key]='data.select.key'
+                          [options]="data.select.options" [select]="data.select.select"
+                          [required]='data.select.required' (onSelect)="myUser[data.key] = $event">
+                      </xeron-select-form>
+                  </ng-container>
+              </div>
+          </ng-container>
 
             <div class="form-group col-12 order-first order-md-2">
               <xeron-errors-form [show]="status.errores" [errors]="status.errores"></xeron-errors-form>
