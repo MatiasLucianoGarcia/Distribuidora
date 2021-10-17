@@ -31,55 +31,6 @@ export class FormComponent implements OnInit {
   ngOnInit(): void {
     this.myUser = (this.user === undefined) ? this._user.dummy() : { ...this.user };
     this.modalKey = 'modalUser-' + this.myUser.id;
-    this.inputs = [
-      {
-        key: 'nombre',
-        input: {
-          required: true,
-          name: 'Nombre',
-          placeholder: 'Ingrese el nombre',
-          value: this.myUser.nombre + ''
-        }
-      },
-      {
-        key: 'email',
-        input: {
-          required: true,
-          name: 'E-mail',
-          placeholder: 'E-mail del usuario',
-          value: this.myUser.email
-        }
-      },
-      {
-        key: 'role',
-        select: {
-          required: true,
-          name: 'Rol',
-          options: ['admin', 'cliente'],
-          select: this.myUser.role
-        }
-      },
-      {
-        key: 'lista',
-        select: {
-          required: true,
-          name: 'Lista',
-          key: 'nombre',
-          options: this.listas,
-          select: this.myUser.lista
-        }
-      },
-      {
-        key: 'password',
-        input: {
-          required: true,
-          name: 'Password',
-          placeholder: 'Contraseña del usuario',
-          value: this.myUser.password,
-          type: 'password'
-        }
-      },
-    ]
   }
 
   confirmar = (): void => {

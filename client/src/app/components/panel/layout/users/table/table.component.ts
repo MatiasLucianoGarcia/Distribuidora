@@ -16,7 +16,7 @@ export class TableComponent implements OnInit {
 
   ngOnInit(): void {
     this.table = new Table(this.users, 10, 1);
-    this.keys = ['nombre', 'email', 'role'];
+    this.keys = ['nombre', 'email', 'role', 'lista.nombre'];
   }
 
 }
