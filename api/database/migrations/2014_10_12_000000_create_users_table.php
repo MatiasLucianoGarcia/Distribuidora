@@ -55,6 +55,7 @@ class CreateUsersTable extends Migration
             'email' => $email,
             'password' => $password,
             'role' => $tipo,
+            'lista_id' => 1,
             'created_at' => now(),
             'updated_at' => now()
         ]);

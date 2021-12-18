@@ -20,6 +20,7 @@ class CreateProductosTable extends Migration
 
             $table->increments('id');
             $table->string('nombre')->unique();
+            $table->string('imagen')->nullable();
             $table->integer('categoria_id')->unsigned();
             $table->timestamps();
 

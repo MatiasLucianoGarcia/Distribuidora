@@ -19,9 +19,11 @@ class CreateVariedadesTable extends Migration
 			$table->collation = 'utf8_general_ci';
 
             $table->increments('id');
-            $table->string('nombre');
-            $table->integer('producto_id')->unsigned();
             $table->string('codigo')->unique();
+            $table->string('nombre');
+            $table->string('imagen')->nullable();
+            $table->integer('producto_id')->unsigned();
+            $table->decimal('precio', 10, 2)->unsigned();
             $table->string('stock')->default(0);
             $table->timestamps();
 

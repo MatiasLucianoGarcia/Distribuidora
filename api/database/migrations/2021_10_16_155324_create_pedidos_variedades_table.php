@@ -21,6 +21,8 @@ class CreatePedidosVariedadesTable extends Migration
             $table->increments('id');
             $table->integer('variedad_id')->unsigned();
             $table->integer('pedido_id')->unsigned();
+            $table->decimal('cantidad', 1, 0)->unsigned();
+            $table->decimal('precio', 10, 2)->unsigned();
             $table->timestamps();
 
             $table->foreign('variedad_id')

@@ -43,4 +43,8 @@ class User extends Authenticatable
         return $this->HasOne(Lista::class,'id','lista_id');
     }
 
+    public function pedidos(){
+        return $this->HasMany(Pedido::class, 'usuario_id', 'id');
+    }
+
 }
