@@ -5,6 +5,7 @@
     <div class="border-right sidebar-wrapper text-left" id="sidebar-wrapper">
       <div class="sidebar-heading">Administrador</div>
       <div class="list-group list-group-flush text-left">
+        <a [routerLink]="['/panel/categorias']" class="item" (click)="click()"><span class="mr-2"><i class="fad fa-user"></i></span> Categorias</a>
         <a [routerLink]="['/panel/usuarios']" class="item" (click)="click()"><span class="mr-2"><i class="fad fa-user"></i></span> Usuarios</a>
         <a  class="item exit" data-toggle="modal" (click)="logout()"><span class="mr-2"><i class="fal fa-sign-out-alt"></i></span> Cerrar Sesión</a>
       </div>

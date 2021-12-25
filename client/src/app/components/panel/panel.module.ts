@@ -23,6 +23,9 @@ import { ButtonCloseFormComponent } from './helpers/form/button-close-form/butto
 import { CustomFormComponent } from './helpers/form/custom-form/custom-form.component';
 import { ButtonEditComponent } from './helpers/form/button-edit/button-edit.component';
 import { ButtonCreateComponent } from './helpers/form/button-create/button-create.component';
+import { CategoriasComponent } from './layout/categorias/categorias.component';
+import { TableComponent as CategoriasTableComponent } from './layout/categorias/table/table.component';
+import { FormComponent as CategoriaFormComponent } from './layout/categorias/form/form.component';
 
 
 @NgModule({
@@ -45,7 +48,10 @@ import { ButtonCreateComponent } from './helpers/form/button-create/button-creat
     ButtonCloseFormComponent,
     CustomFormComponent,
     ButtonEditComponent,
-    ButtonCreateComponent
+    ButtonCreateComponent,
+    CategoriasComponent,
+    CategoriasTableComponent,
+    CategoriaFormComponent
 
   ],
   imports: [

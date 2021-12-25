@@ -83,5 +83,9 @@ class Kernel extends HttpKernel
         'storage.image' => \App\Http\Middleware\Storage\Image::class,
         'storage.pdf' => \App\Http\Middleware\Storage\PDF::class,
 
+        //categoria
+        'categoria.data' => \App\Http\Middleware\Categoria\Data::class,
+        'categoria.id' => \App\Http\Middleware\Categoria\Id::class,
+
     ];
 }

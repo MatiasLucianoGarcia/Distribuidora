@@ -1,0 +1,38 @@
+<xeron-button-edit *ngIf="myCategoria && myCategoria.id!==0" [key]="modalKey"></xeron-button-edit>
+
+<xeron-button-create *ngIf="myCategoria && myCategoria.id===0" [key]="modalKey" [title]='title'></xeron-button-create>
+
+<!-- Modal -->
+<div *ngIf="myCategoria" class="modal fade" [attr.id]="modalKey" tabindex="-1" role="dialog"
+  aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">{{title}}</h5>
+        <button #closebutton type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form #productForm="ngForm">
+        <div class="modal-body text-left">
+          <div class="form-row">
+
+            <div class="form-group col-12 order-first order-md-2">
+              <xeron-input-form [name]='"Nombre"' [placeholder]="'Nombre de la categoria'" [required]='true'
+                [value]="myCategoria.nombre" (onChange)="myCategoria.nombre = $event"></xeron-input-form>
+            </div>
+
+            <div class="form-group col-12 order-first order-md-2">
+              <xeron-errors-form [show]="status.errores" [errors]="status.errores"></xeron-errors-form>
+            </div>
+
+          </div>
+        </div>
+        <div class="modal-footer">
+          <xeron-button-close-form></xeron-button-close-form>
+          <xeron-button-confirm-form [loading]="status.loading" (onConfirm)="confirmar()"></xeron-button-confirm-form>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

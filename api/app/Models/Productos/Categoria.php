@@ -14,8 +14,8 @@ class Categoria extends Model
     protected $hidden = ['details', 'created_at','updated_at'];
 
 
-    public function productos(){
-        return $this->HasMany(Producto::class, 'categoria_id', 'id');
+    public function variedades(){
+        return $this->HasMany(Variedad::class, 'categoria_id', 'id');
     }
 
 

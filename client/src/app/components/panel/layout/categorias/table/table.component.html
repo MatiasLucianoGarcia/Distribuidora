@@ -1,0 +1,42 @@
+<div class="div-tabla table-responsive">
+    <xeron-filter
+      [list]="categorias"
+      [keys]="keys"
+      [placeholder]="'Buscar por nombre'"
+      (newList)="table.elements_filter = $event"
+    >
+    </xeron-filter>
+
+    <xeron-form-categoria [title]="'Crear categoria'" (updateTable)="table.insertElement($event)"></xeron-form-categoria>
+
+    <table class="table table-hover fixed">
+      <thead>
+        <tr>
+          <th scope="col">Nombre</th>
+          <th scope="col">Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <div *ngIf="table.elements_filter.length > 0; then thenBlock; else elseBlock"></div>
+
+        <ng-template #thenBlock>
+          <tr *ngFor=" let categoria of table.elements_filter  | paginate: { itemsPerPage: table.itemsPerPage, currentPage: table.currentPage }">
+            <td>{{ categoria.nombre }}</td>
+            <td>
+              <!-- <xeron-form-categoria [title]="'Editar usuario'" [categoria]="categoria"  [listas]="listas" (updateTable)="table.updateElement($event)"></xeron-form-categoria>
+              <xeron-delete-categoria [categoria]="categoria" (updateTable)="table.deleteElement($event)"></xeron-delete-categoria> -->
+            </td>
+          </tr>
+        </ng-template>
+        <ng-template #elseBlock>
+          <tr>
+            <td *ngIf="table.elements_filter && table.elements_filter.length == 0 && categorias.length>0" class="no-data text-center" colspan="4">No existen categorias con el filtro ingresado</td>
+            <td *ngIf="categorias.length == 0" class="no-data text-center" colspan="2">No existen categorias</td>
+          </tr>
+        </ng-template>
+      </tbody>
+    </table>
+
+    <pagination-controls class="pagination" (pageChange)="table.currentPage = $event" autoHide="true" responsive="true"
+      directionLinks="true" previousLabel="Anterior" nextLabel="Siguiente" maxSize="6"></pagination-controls>
+  </div>

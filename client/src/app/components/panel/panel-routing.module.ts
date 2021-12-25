@@ -4,6 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { PanelComponent } from './panel.component';
 import { LoginComponent } from './login/login.component';
 import { AdminGuard } from '../../guards/admin.guard';
+import { CategoriasComponent } from './layout/categorias/categorias.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -15,6 +16,11 @@ const routes: Routes = [
       {
         path: 'usuarios', children: [
           { path: '', component: UsersComponent }
+        ]
+      },
+      {
+        path: 'categorias', children: [
+          { path: '', component: CategoriasComponent }
         ]
       },
     ],

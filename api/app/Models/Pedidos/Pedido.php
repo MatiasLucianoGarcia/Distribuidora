@@ -2,6 +2,7 @@
 
 namespace App\Models\Pedidos;
 
+use App\Models\Productos\Variedad;
 use App\Models\Users\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -14,12 +15,18 @@ class Pedido extends Model
     protected $fillable = ['usuario_id', 'estado_id'];
 
 
-    public function estado(){
+    public function estado()
+    {
         return $this->belongsTo(PedidoEstado::class, 'estado_id', 'id');
     }
 
-    public function usuario(){
+    public function usuario()
+    {
         return $this->belongsTo(User::class, 'usuario_id', 'id');
     }
-    
+
+    public function articulos()
+    {
+        return $this->belongsToMany(Variedad::class, 'pedidos_variedades');
+    }
 }
