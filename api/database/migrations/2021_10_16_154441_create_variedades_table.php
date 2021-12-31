@@ -22,8 +22,8 @@ class CreateVariedadesTable extends Migration
             $table->string('codigo')->unique();
             $table->string('nombre');
             $table->string('imagen')->nullable();
-            $table->integer('producto_id')->unsigned();
-            $table->integer('categoria_id')->unsigned();
+            $table->integer('producto_id')->unsigned()->nullable();
+            $table->integer('categoria_id')->unsigned()->nullable();
             $table->decimal('precio', 10, 2)->unsigned();
             $table->string('stock')->default(0);
             $table->timestamps();

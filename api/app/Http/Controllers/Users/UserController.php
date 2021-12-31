@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Users;
 
 use App\Helpers\Response\Response;
 use App\Http\Controllers\Controller;
-use App\Models\DistribuidaDB\ArticulosDist;
 use App\Repositories\Users\UserRepo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -15,7 +14,6 @@ class UserController extends Controller
     public function all()
     {
         $users = UserRepo::all();
-        //$articulos = ArticulosDist::all();
         return Response::success($users);
     }
 

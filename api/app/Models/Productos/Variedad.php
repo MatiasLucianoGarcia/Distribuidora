@@ -11,7 +11,7 @@ class Variedad extends Model
     use HasFactory;
 
     protected $table = 'variedades';
-    protected $fillable = ['codigo', 'nombre', 'imagen', 'stock', 'categoria_id'];
+    protected $fillable = ['codigo', 'nombre', 'imagen', 'stock', 'categoria_id', 'precio'];
     protected $hidden = ['created_at', 'updated_at'];
 
     public function producto()

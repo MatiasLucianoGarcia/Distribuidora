@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Repositories\Producto;
+namespace App\Repositories\Productos;
 
 use App\Models\Productos\Variedad;
 
