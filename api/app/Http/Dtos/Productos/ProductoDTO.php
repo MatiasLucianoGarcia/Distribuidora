@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Dtos;
+namespace App\Http\Dtos\Productos;
 
 class ProductoDTO
 {
     public $id;
-    public $nombre;
     public $imagen;
+    public $nombre;
     public $variedades;
+    public $type = 'products';
 }

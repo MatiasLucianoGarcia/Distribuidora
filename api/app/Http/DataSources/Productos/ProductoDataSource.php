@@ -2,16 +2,21 @@
 
 namespace App\Http\DataSources\Productos;
 
-use App\Http\Dtos\ProductoDTO;
-use App\Http\Dtos\VariedadDTO;
+use App\Http\Dtos\Productos\ProductoDTO;
+use App\Http\Dtos\Productos\VariedadDTO;
 use App\Repositories\Productos\ProductoRepo;
 use App\Repositories\Productos\VariedadRepo;
 
-class ProductosDataSource
+class ProductoDataSource
 {
-    public function getProductos() {
+
+    /**
+     * Retorna un arreglo de tipo ProductoDTO
+     * @return {Array<ProductoDTO>} Retorn un arreglo de tipo ProductoDTO 
+     */
+    public function getProductos(): Array {
         $productos = ProductoRepo::all()->load('variedades');
-        $variedades = VariedadRepo::all()->load('producto');
+        $variedades = VariedadRepo::all()->load('producto', 'categoria');
 
         return array_merge(
             $this->parseProductosWithVariedades($productos),
@@ -19,7 +24,15 @@ class ProductosDataSource
         );
     }
 
-    private function parseProductosWithVariedades($productos){
+    /**
+     * Retorna los productos sin sus variedades
+     */
+    public function getOnlyProductos(): Array {
+        return ProductoRepo::all()->toArray();
+    }
+
+
+    private function parseProductosWithVariedades($productos): Array{
         if(count($productos)===0){
             return [];
         }
@@ -36,9 +49,10 @@ class ProductosDataSource
             $vAux = [];
 
             foreach($producto->variedades as $variedad){
-                $v = new VariedadDTO();
+                $v = new ProductoDTO();
                 $v->id = $variedad->id;
                 $v->codigo = $variedad->codigo;
+                $v->categoria = $variedad->categoria->nombre;
                 $v->imagen = $variedad->imagen;
                 $v->nombre = $variedad->nombre;
                 $v->stock = $variedad->stock;
@@ -48,10 +62,11 @@ class ProductosDataSource
             $p->variedades = $vAux;
             array_push($array, $p);
         }
+
         return $array;
     }
 
-    private function parseVariedadesWithoutProducto($variedades){
+    private function parseVariedadesWithoutProducto($variedades): Array{
         if(count($variedades)===0){
             return [];
         }
@@ -61,22 +76,17 @@ class ProductosDataSource
             if(!is_null($variedad->producto))
                 continue;
 
-            $p = new ProductoDTO();
-            $p->id = $variedad->id;
-            $p->nombre = $variedad->nombre;
-            $p->imagen = $variedad->imagen;
-
             $v = new VariedadDTO();
             $v->id = $variedad->id;
             $v->codigo = $variedad->codigo;
             $v->imagen = $variedad->imagen;
+            $v->categoria = $variedad->categoria->nombre;
             $v->nombre = $variedad->nombre;
             $v->stock = $variedad->stock;
             $v->precio = $variedad->precio;
+            $v->variedades = null;
 
-            $p->variedades = [$v];
-
-            array_push($array, $p);
+            array_push($array, $v);
         }
         return $array;
     }

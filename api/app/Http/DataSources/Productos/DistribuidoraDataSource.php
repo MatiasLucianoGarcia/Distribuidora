@@ -12,7 +12,7 @@ class DistribuidoraDataSource
     private $productosDataSource;
   
     public function __construct(){
-        $this->productosDataSource = new ProductosDataSource();
+        $this->productosDataSource = new ProductoDataSource();
     }
 
 
