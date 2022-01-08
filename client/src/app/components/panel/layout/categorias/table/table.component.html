@@ -23,8 +23,8 @@
           <tr *ngFor=" let categoria of table.elements_filter  | paginate: { itemsPerPage: table.itemsPerPage, currentPage: table.currentPage }">
             <td>{{ categoria.nombre }}</td>
             <td>
-              <!-- <xeron-form-categoria [title]="'Editar usuario'" [categoria]="categoria"  [listas]="listas" (updateTable)="table.updateElement($event)"></xeron-form-categoria>
-              <xeron-delete-categoria [categoria]="categoria" (updateTable)="table.deleteElement($event)"></xeron-delete-categoria> -->
+              <xeron-form-categoria [title]="'Editar categoria'" [categoria]="categoria" (updateTable)="table.updateElement($event)"></xeron-form-categoria>
+              <xeron-delete-categoria [categoria]="categoria" (updateTable)="table.deleteElement($event)"></xeron-delete-categoria>
             </td>
           </tr>
         </ng-template>

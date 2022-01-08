@@ -26,6 +26,12 @@ import { ButtonCreateComponent } from './helpers/form/button-create/button-creat
 import { CategoriasComponent } from './layout/categorias/categorias.component';
 import { TableComponent as CategoriasTableComponent } from './layout/categorias/table/table.component';
 import { FormComponent as CategoriaFormComponent } from './layout/categorias/form/form.component';
+import { DeleteComponent as DeleteCategoriaComponent } from './layout/categorias/delete/delete.component';
+import { ProductosComponent } from './layout/productos/productos.component';
+import { TableComponent as ProductoTableComponent} from './layout/productos/table/table.component';
+import { FormComponent as ProductoFormComponent} from './layout/productos/form/form.component';
+import { DeleteComponent as ProductoDeleteComponent } from './layout/productos/delete/delete.component';
+import { InfoComponent as ProductInfoComponent } from './layout/productos/info/info.component';
 
 
 @NgModule({
@@ -51,7 +57,13 @@ import { FormComponent as CategoriaFormComponent } from './layout/categorias/for
     ButtonCreateComponent,
     CategoriasComponent,
     CategoriasTableComponent,
-    CategoriaFormComponent
+    CategoriaFormComponent,
+    DeleteCategoriaComponent,
+    ProductosComponent,
+    ProductoTableComponent,
+    ProductoFormComponent,
+    ProductoDeleteComponent,
+    ProductInfoComponent
 
   ],
   imports: [

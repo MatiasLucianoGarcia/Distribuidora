@@ -12,7 +12,7 @@ export class Filter {
     for (const keyGroup of keys) {
       let dato = element;
       for (const key of keyGroup.split('.')){
-        dato = (dato[key]) ? dato[key] : undefined;
+        dato = dato && dato[key] ? dato[key] : undefined;
       }
       if (dato && dato.toLowerCase().search(value.toLowerCase()) !== -1){
         return true;

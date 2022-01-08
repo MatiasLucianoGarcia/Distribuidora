@@ -86,6 +86,12 @@ class Kernel extends HttpKernel
         //categoria
         'categoria.data' => \App\Http\Middleware\Categoria\Data::class,
         'categoria.id' => \App\Http\Middleware\Categoria\Id::class,
+        'categoria.delete' => \App\Http\Middleware\Categoria\Delete::class,
+
+        //producto
+        'producto.data' => \App\Http\Middleware\Producto\Data::class,
+        'producto.id' => \App\Http\Middleware\Producto\Id::class,
+        'producto.delete' => \App\Http\Middleware\Producto\Delete::class,
 
     ];
 }

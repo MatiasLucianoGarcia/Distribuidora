@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Middleware\Investigators;
+namespace App\Http\Middleware\Categoria;
 
 use App\Helpers\Validator\Validator;
 use Closure;

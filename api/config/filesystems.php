@@ -62,6 +62,21 @@ return [
             'visibility' => 'public',
         ],
 
+        'productos' => [
+            'driver' => 'local',
+            'root' => storage_path('app/public/productos'),
+            'url' => env('APP_URL').'/storage/productos',
+            'visibility' => 'public',
+        ],
+
+
+        'variedad' => [
+            'driver' => 'local',
+            'root' => storage_path('app/public/variedad'),
+            'url' => env('APP_URL').'/storage/variedad',
+            'visibility' => 'public',
+        ],
+
         's3' => [
             'driver' => 's3',
             'key' => env('AWS_ACCESS_KEY_ID'),

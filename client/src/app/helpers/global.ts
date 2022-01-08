@@ -4,7 +4,7 @@ export let GLOBAL = {
 
   api: 'http://127.0.0.1:8000/api/',
 
-  storage: 'http://127.0.0.1:8000/api/storage',
+  storage: 'http://127.0.0.1:8000/storage/',
 
   indexedDB: {
     database: 'database-template',

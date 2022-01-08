@@ -1,0 +1,43 @@
+<div class="div-tabla table-responsive">
+    <xeron-filter [list]="productos" [keys]="keys" [placeholder]="'Buscar por nombre'"
+        (newList)="table.elements_filter = $event">
+    </xeron-filter>
+
+    <xeron-form-producto [title]="'Crear producto'" (updateTable)="table.insertElement($event)"></xeron-form-producto>
+
+    <table class="table table-hover fixed">
+        <thead>
+            <tr>
+                <th scope="col">Nombre</th>
+                <th scope="col">Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <div *ngIf="table.elements_filter.length > 0; then thenBlock; else elseBlock"></div>
+
+            <ng-template #thenBlock>
+
+
+                <tr
+                    *ngFor=" let producto of table.elements_filter  | paginate: { itemsPerPage: table.itemsPerPage, currentPage: table.currentPage }">
+                    <td>{{ producto.nombre }}</td>
+                    <td>
+                        <xeron-info-producto [producto]="producto" (updateTable)="deleteElement($event)"></xeron-info-producto>
+                        <xeron-form-producto [title]="'Editar producto'" [producto]="producto" (updateTable)="table.updateElement($event)"></xeron-form-producto>
+                        <xeron-delete-producto [producto]="producto" (updateTable)="table.deleteElement($event)"></xeron-delete-producto>
+                    </td>
+                </tr>
+            </ng-template>
+            <ng-template #elseBlock>
+                <tr>
+                    <td *ngIf="table.elements_filter && table.elements_filter.length == 0 && productos.length>0"
+                        class="no-data text-center" colspan="4">No existen productos con el filtro ingresado</td>
+                    <td *ngIf="productos.length == 0" class="no-data text-center" colspan="2">No existen productos</td>
+                </tr>
+            </ng-template>
+        </tbody>
+    </table>
+
+    <pagination-controls class="pagination" (pageChange)="table.currentPage = $event" autoHide="true" responsive="true"
+        directionLinks="true" previousLabel="Anterior" nextLabel="Siguiente" maxSize="6"></pagination-controls>
+</div>

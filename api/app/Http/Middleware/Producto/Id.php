@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Middleware\Categoria;
+namespace App\Http\Middleware\Producto;
 
 use App\Helpers\Validator\Validator;
 use Closure;
@@ -24,7 +24,7 @@ class Id
 
         Validator::validator(
             ["id" => $id],
-            ["id" => 'required|exists:categorias,id']
+            ["id" => 'required|exists:productos,id']
         );
 
         return $next($request);

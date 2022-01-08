@@ -16,7 +16,11 @@ export class InputFormComponent<T> implements DoCheck {
   constructor() { }
 
   ngDoCheck(): void {
-    this.onChange.emit(this.value);
+    try{
+      this.onChange.emit(this.value);
+    }catch(e){
+
+    }
   }
 
 }

@@ -5,6 +5,7 @@ import { PanelComponent } from './panel.component';
 import { LoginComponent } from './login/login.component';
 import { AdminGuard } from '../../guards/admin.guard';
 import { CategoriasComponent } from './layout/categorias/categorias.component';
+import { ProductosComponent } from './layout/productos/productos.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -21,6 +22,11 @@ const routes: Routes = [
       {
         path: 'categorias', children: [
           { path: '', component: CategoriasComponent }
+        ]
+      },
+      {
+        path: 'productos', children: [
+          { path: '', component: ProductosComponent }
         ]
       },
     ],

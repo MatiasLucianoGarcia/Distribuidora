@@ -16,9 +16,9 @@ class CategoriaController extends Controller
         return Response::success($categoria);
     }
 
-    public function delete(Request $request, $email)
+    public function delete(Request $request, $id)
     {
-        $user = CategoriaRepo::delete($email);
+        $user = CategoriaRepo::delete($id);
         return Response::success($user);
     }
 

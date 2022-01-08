@@ -1,0 +1,32 @@
+<a *ngIf="producto && producto.id!==0" type="button" title="Información" class="text-info ml-2" data-toggle="modal"
+  [attr.data-target]="'#modalInfoInvestigators-'+producto.id">
+  <i class="fal fa-info-circle"></i>
+</a>
+
+<!-- Modal -->
+<div *ngIf="producto" class="modal fade modal-width" [attr.id]="'modalInfoInvestigators-'+producto.id" tabindex="-1"
+  role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Información</h5>
+        <button #closebutton type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form #productForm="ngForm">
+        <div class="modal-body text-left">
+
+          <p><b>Nombre</b>: {{producto.nombre}}</p>
+
+          <p><b>Imagen</b>: <span *ngIf="!producto.imagen">No tiene</span></p>
+          <p *ngIf="producto.imagen" class="col-md-6 pl-0"><img class="col-12 pl-0" [src]="urlStorage + 'productos/' + producto.imagen" /></p>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
