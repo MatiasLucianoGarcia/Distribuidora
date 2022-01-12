@@ -1,0 +1,55 @@
+.height{
+    min-height: 40vh;
+}
+
+
+.title{
+    float: left;
+    background-attachment: fixed;
+    background-image: url('/assets/folder/bg-completo-2.jpeg');
+    background-size: 100% auto;
+    background-position: center;
+    margin-bottom: 20px;
+    clear: both;
+}
+
+.title .gradient{
+    float: left;
+    background-color: rgba(0,0,0,0.6);
+}
+
+h2{
+    color: #EEEFEF;
+    font-size: 55px;
+    font-family: 'Montserrat', cursive;
+    padding: 30px 0;
+    font-weight: 500;
+}
+
+@media only screen and (max-width: 1410px) {    
+}
+
+@media only screen and (max-width: 1199px) { 
+    .title{
+        background-size: auto 100% !important;
+    }
+
+    h2{
+        font-size: 30px;
+        padding: 15px 0;
+    }
+    
+
+}
+
+@media only screen and (max-width: 991px) {	
+}
+
+@media only screen and (max-width: 768px) {    
+}
+
+@media only screen and (max-width: 575px) {
+}
+
+@media only screen and (max-width: 360px) {
+}
