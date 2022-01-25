@@ -1,0 +1,22 @@
+.card{
+  width: 14em;
+  border-radius: 6px;
+  border:1px solid rgba(187, 187, 187, 0.24);
+  box-shadow: 0 1px 1px 1px rgba(0, 0, 0, 0.11);
+  &__img{
+    width: 100%;
+    background-size: cover;
+  }
+  &__title{
+    color:#ffffff;
+    font-size: 1.2em;
+    background-color: black;
+    padding: 0.2em;
+    border-radius: 6px 6px 0 0;
+  }
+  &__text{
+    justify-content: center;
+    text-align: center;
+  }
+
+}
