@@ -3,7 +3,21 @@
     <xeron-carousel></xeron-carousel>
   </div>
   <div class="contenedor__recomendaciones">
-    <xeron-min-product-card></xeron-min-product-card>
+    <swiper [config]="config">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide"><xeron-min-product-card></xeron-min-product-card></div>
+        <div class="swiper-slide"><xeron-min-product-card></xeron-min-product-card></div>
+        <div class="swiper-slide"><xeron-min-product-card></xeron-min-product-card></div>
+        <div class="swiper-slide"><xeron-min-product-card></xeron-min-product-card></div>
+        <div class="swiper-slide"><xeron-min-product-card></xeron-min-product-card></div>
+      </div>
+
+      <div class="swiper-pagination"></div>
+
+
+      <div class="swiper-button-next"></div>
+      <div class="swiper-button-prev"></div>
+    </swiper>
   </div>
 
 </section>

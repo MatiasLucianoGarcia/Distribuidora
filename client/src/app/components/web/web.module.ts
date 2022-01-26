@@ -8,7 +8,8 @@ import { FooterComponent } from './footer/footer.component';
 import { HomeComponent } from './home/home.component';
 import { CarouselComponent } from './home/carousel/carousel.component';
 import { MinProductCardComponent } from './home/min-product-card/min-product-card.component';
-
+ import { NgxUsefulSwiperModule } from 'ngx-useful-swiper';
+//import { SwiperModule } from 'swiper/angular';
 
 @NgModule({
   declarations: [
@@ -17,10 +18,11 @@ import { MinProductCardComponent } from './home/min-product-card/min-product-car
     FooterComponent,
     HomeComponent,
     CarouselComponent,
-    MinProductCardComponent
+    MinProductCardComponent,
   ],
   imports: [
     CommonModule,
+    NgxUsefulSwiperModule,
     WebRoutingModule
   ]
 })
