@@ -20,8 +20,7 @@ class ArticuloDistRepo
     public static function all()
     {
         try {
-            //return ArticuloDist::orderBy('nombre','ASC')->get();
-            return json_decode(self::$data);
+            return ArticuloDist::orderBy('nombre','ASC')->get();
         } catch (\Exception $e) {
             return json_decode('[]');
         }
