@@ -9,6 +9,7 @@ import { HomeComponent } from './home/home.component';
 import { CarouselComponent } from './home/carousel/carousel.component';
 import { MinProductCardComponent } from './home/min-product-card/min-product-card.component';
  import { NgxUsefulSwiperModule } from 'ngx-useful-swiper';
+import { AboutUsComponent } from './about-us/about-us.component';
 //import { SwiperModule } from 'swiper/angular';
 
 @NgModule({
@@ -19,6 +20,7 @@ import { MinProductCardComponent } from './home/min-product-card/min-product-car
     HomeComponent,
     CarouselComponent,
     MinProductCardComponent,
+    AboutUsComponent,
   ],
   imports: [
     CommonModule,
