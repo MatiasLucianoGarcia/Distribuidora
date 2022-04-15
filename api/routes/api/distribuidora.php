@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 /** -----------------------------------------
- * --------------- Categoria ----------------
+ * ---------- distribuidora ----------------
  * -------------------------------------- **/
 Route::group(['prefix' => 'distribuidora'], function () {
     Route::get('', 'Productos\DistribuidoraController@all');

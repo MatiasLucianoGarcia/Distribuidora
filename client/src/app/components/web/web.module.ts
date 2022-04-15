@@ -11,6 +11,10 @@ import { MinProductCardComponent } from './home/min-product-card/min-product-car
  import { NgxUsefulSwiperModule } from 'ngx-useful-swiper';
 import { AboutUsComponent } from './about-us/about-us.component';
 //import { SwiperModule } from 'swiper/angular';
+import { TiendaComponent } from './tienda/tienda.component';
+import { FiltrosComponent } from './tienda/filtros/filtros.component';
+import { FormsModule } from '@angular/forms';
+
 
 @NgModule({
   declarations: [
@@ -20,12 +24,16 @@ import { AboutUsComponent } from './about-us/about-us.component';
     HomeComponent,
     CarouselComponent,
     MinProductCardComponent,
+    TiendaComponent,
+    FiltrosComponent
     AboutUsComponent,
   ],
   imports: [
     CommonModule,
-    NgxUsefulSwiperModule,
-    WebRoutingModule
+    WebRoutingModule,
+    FormsModule
   ]
 })
+
+
 export class WebModule { }
